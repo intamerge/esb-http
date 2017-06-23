@@ -8,9 +8,8 @@
 
 package net.esb.entity.element.connector;
 
-import static net.esb.entity.element.common.ElementCommonConstants.PROP_ENCODING;
-import static net.esb.entity.element.common.ElementCommonConstants.PROP_OUTPUT_TYPE;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_URL;
+import static net.esb.entity.element.common.ElementCommonConstants.*;
+import static net.esb.entity.element.common.ElementNetworkConstants.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -198,7 +197,7 @@ public class HttpOutputConnector extends AbstractMapOutputConnector<HttpOutputCo
 		        case INPUTSTREAM:
 		        	payload = new InputStreamWrapper(instream, response);
 		        	break;
-		        case STRING:
+		        case TEXTSTRING:
 		        default:
 		        	payload = IOUtils.toString(instream, encoding);
 		        	instream.close();

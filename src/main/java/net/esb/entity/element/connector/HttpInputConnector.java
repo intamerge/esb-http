@@ -8,10 +8,7 @@
 
 package net.esb.entity.element.connector;
 
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_CONTEXT;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_HOST;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_PORT;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_RESPONSETIMEOUT;
+import static net.esb.entity.element.common.ElementNetworkConstants.*;
 
 import java.io.CharConversionException;
 import java.io.IOException;

@@ -8,17 +8,9 @@
 
 package net.esb.entity.element.connector;
 
-import static net.esb.entity.common.EntityConfigurationProperty.ElementPropertyType.INTEGER;
-import static net.esb.entity.common.EntityConfigurationProperty.ElementPropertyType.STRING;
-import static net.esb.entity.common.ElementStandardIcon.INPUT_CONNECTOR;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_CONTEXT;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_CONTEXT_DESC;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_HOST;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_HOST_DESC;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_PORT;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_PORT_DESC;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_RESPONSETIMEOUT;
-import static net.esb.entity.element.common.ElementNetworkConstants.PROP_RESPONSETIMEOUT_DESC;
+import static net.esb.entity.common.EntityConfigurationProperty.ElementPropertyType.*;
+import static net.esb.entity.common.ElementStandardIcon.*;
+import static net.esb.entity.element.common.ElementNetworkConstants.*;
 
 import org.springframework.stereotype.Component;
 

@@ -8,13 +8,11 @@
 
 package net.esb.entity.element.connector;
 
+import static net.esb.entity.common.ElementStandardIcon.OUTPUT_CONNECTOR;
 import static net.esb.entity.common.EntityConfigurationProperty.ElementPropertyType.CHOICE;
 import static net.esb.entity.common.EntityConfigurationProperty.ElementPropertyType.STRING;
-import static net.esb.entity.common.ElementStandardIcon.OUTPUT_CONNECTOR;
 import static net.esb.entity.element.common.ElementCommonConstants.PROP_ENCODING;
 import static net.esb.entity.element.common.ElementCommonConstants.PROP_ENCODING_DESC;
-import static net.esb.entity.element.common.ElementHttpConstants.PROP_OUTPUT_TYPE;
-import static net.esb.entity.element.common.ElementHttpConstants.PROP_OUTPUT_TYPE_DESC;
 import static net.esb.entity.element.common.ElementNetworkConstants.PROP_URL;
 import static net.esb.entity.element.common.ElementNetworkConstants.PROP_URL_DESC;
 
@@ -24,7 +22,7 @@ import net.esb.build.BuildInfo;
 import net.esb.entity.common.Colors;
 import net.esb.entity.common.EntityConfigurationProperty;
 import net.esb.entity.element.common.ElementCommonConstants;
-import net.esb.entity.element.connector.AbstractConnectorDefinition;
+import net.esb.entity.element.common.ElementHttpConstants;
 import net.esb.plugin.IPluginInfo;
 import net.esb.plugin.PluginInfo;
 
@@ -49,7 +47,7 @@ public class HttpOutputConnectorDefinition extends AbstractConnectorDefinition<H
 	
 	void registerProperties(){
 		configurationProperties.add(new EntityConfigurationProperty(PROP_URL, PROP_URL_DESC, STRING, NOTREADONLY, 50));
-		EntityConfigurationProperty operation = new EntityConfigurationProperty(PROP_OUTPUT_TYPE, PROP_OUTPUT_TYPE_DESC, CHOICE, READONLY, 51);
+		EntityConfigurationProperty operation = new EntityConfigurationProperty(ElementHttpConstants.PROP_OUTPUT_TYPE, ElementHttpConstants.PROP_OUTPUT_TYPE_DESC, CHOICE, NOTREADONLY, 51);
 		operation.setChoices(choicesMapFromEnum(ElementCommonConstants.OUTPUT_TYPE.class, null));
 		configurationProperties.add(operation); 
 
