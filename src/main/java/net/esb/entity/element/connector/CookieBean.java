@@ -1,21 +1,11 @@
-/*
- * (c) 2016 Copyright MustangOpen http://www.mustangopen.com/
+/**
+ * Copyright (c) 2016-2017 Intamerge http://www.intamerge.com
  * All Rights Reserved.
- * 
- * MustangOpen is dual-licensed and available under both commercial and open-source licenses.  
- * The open-source license is AGPLv3 and allows you to freely download and use the product.  Try it free !
- * 
- * If AGPLv3 does not suit your requirements please consider purchasing a commercial license from us.
- * 
- * Additional benefit is available through purchase of the commercial license including:
- * 
- * access to commercial plugins,
- * improved support,
- * freedom from the AGPLv3 and
- * early access to fixes and releases.
- * 
- * To discuss a commercial agreement please contact us: http://www.mustangopen.com/contact/
+ *
+ * This source code is licensed under AGPLv3 and allows you to freely download and use this source:  Try it free !
+ * This license does not extend to source code in other Intamerge source code projects, please refer to those projects for their specific licensing.
  */
+
 package net.esb.entity.element.connector;
 
 import java.time.Duration;
