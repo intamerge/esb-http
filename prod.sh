@@ -8,6 +8,23 @@ else
     . ./setenv.sh
 fi
 
+echo ------------------------------------------------------------------------
+echo Set the version from version.property
+echo ------------------------------------------------------------------------
+
+ant -Dgit_work_tree=/home/mwicks/Dev/git/intamerge-github/esb-http -Dproject_loc=/home/mwicks/Dev/git/intamerge-github/esb-http version
+
+echo ------------------------------------------------------------------------
+echo Set the license
+echo ------------------------------------------------------------------------
+ant -Dgit_work_tree=/home/mwicks/Dev/git/intamerge-github/esb-http -Dproject_loc=/home/mwicks/Dev/git/intamerge-github/esb-http headers
+
+mvn license:format
+
+echo ------------------------------------------------------------------------
+echo Build
+echo ------------------------------------------------------------------------
+
 # following helps the esb-parent script
 rm -fr target/${PROJECT}*
 

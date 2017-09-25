@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2016-2017 Intamerge http://www.intamerge.com
+ * All Rights Reserved.
+ *
+ * This source code is licensed under AGPLv3 and allows you to freely download and use this source:  Try it free !
+ * This license does not extend to source code in other Intamerge source code projects, please refer to those projects for their specific licensing.
+ */
+
 
 package net.esb.build;
 
@@ -9,11 +17,11 @@ package net.esb.build;
  */
 public class BuildInfo {
 
-    private final String revisionNumber = "3";
+    private final String revisionNumber = "4";
     private final String productName = "Intamerge";
-    private final String timeStamp = "Mon, 10-July-2017 13:32:05 BST";
+    private final String timeStamp = "Mon, 25-September-2017 11:15:30 BST";
     private final String year = "2017";
-    private final String version = "1.0.8";
+    private final String version = "1.0.9";
     private final String name = "1.0.8";
     private final static BuildInfo buildInfo = new BuildInfo();
 

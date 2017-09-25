@@ -60,12 +60,14 @@ public class HttpInputConnector extends AbstractMapInputConnector<HttpInputConne
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_HOST) 
     public String host = "0.0.0.0";
 	
+	// this is a string here to allow variable interpolation
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_PORT) 
     public String port = "" + 9999;
 
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_CONTEXT) 
     public String context = "mycontext";
 	
+	// this is a string here to allow variable interpolation
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_RESPONSETIMEOUT) 
 	public String responseTimeout = "" + 10000;
 
@@ -84,19 +86,19 @@ public class HttpInputConnector extends AbstractMapInputConnector<HttpInputConne
     	
     	if(getStarted()){return;}
     	
-		httpServer = new HttpServer();
-
-		String _host = this.<String>parseStartProperty(String.class, getHost());
-		String _context = this.<String>parseStartProperty(String.class, getContext());
-		Integer _port = this.<Integer>parseStartProperty(Integer.class, getPort());
-		
-		NetworkListener networkListener = new NetworkListener(getName(), _host, _port);
-		httpServer.addListener(networkListener);
-		String myContext = _context.startsWith("/")?_context:"/"+_context;
-		httpServer.getServerConfiguration().addHttpHandler(myHandler, myContext);
 		    
 
 		try {
+			httpServer = new HttpServer();
+			
+			String _host = this.<String>parseTypedProperty(String.class, getHost());
+			String _context = this.<String>parseTypedProperty(String.class, getContext());
+			Integer _port = this.<Integer>parseTypedProperty(Integer.class, getPort());
+			
+			NetworkListener networkListener = new NetworkListener(getName(), _host, _port);
+			httpServer.addListener(networkListener);
+			String myContext = _context.startsWith("/")?_context:"/"+_context;
+			httpServer.getServerConfiguration().addHttpHandler(myHandler, myContext);
 			httpServer.start();
 		    super.start();
 		} catch (Exception e) {

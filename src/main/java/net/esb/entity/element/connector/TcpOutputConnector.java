@@ -71,6 +71,7 @@ public class TcpOutputConnector extends AbstractMapOutputConnector<TcpOutputConn
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_HOST) 
     public String host = "localhost";
 	
+	// this is a string here to allow variable interpolation
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_PORT) 
     public String port = "" + -1;
 
@@ -90,7 +91,9 @@ public class TcpOutputConnector extends AbstractMapOutputConnector<TcpOutputConn
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void sinkAsynchronousOutputMapRequest(IMapMessage message, IMapElementContext context){}
+	protected void sinkAsynchronousOutputMapRequest(IMapMessage requestMessage, IMapElementContext context) throws Exception{
+		sinkMessageImpl(requestMessage, context);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -98,6 +101,11 @@ public class TcpOutputConnector extends AbstractMapOutputConnector<TcpOutputConn
 	 */
 	@Override
 	protected IMapMessage sinkSynchronousOutputMapRequest(IMapMessage requestMessage, IMapElementContext context) throws Exception{
+		return sinkMessageImpl(requestMessage, context);
+		
+	}
+
+	IMapMessage sinkMessageImpl(IMapMessage requestMessage, IMapElementContext context) throws Exception {
 		// send the message
 		// the response should be put into the message payload
 		
@@ -125,8 +133,8 @@ public class TcpOutputConnector extends AbstractMapOutputConnector<TcpOutputConn
 		}
 		
 		return responseMessage;
-		
 	}
+
 
 	@net.esb.entity.common.ElementPropertySetter
 	public void setHost(String host) {
@@ -164,8 +172,8 @@ public class TcpOutputConnector extends AbstractMapOutputConnector<TcpOutputConn
 	        // start the transport
 	        transport.start();
 	
-			String _host = this.<String>parseStartProperty(String.class, getHost());
-			Integer _port = this.<Integer>parseStartProperty(Integer.class, getPort());
+			String _host = this.<String>parseTypedProperty(String.class, getHost());
+			Integer _port = this.<Integer>parseTypedProperty(Integer.class, getPort());
 	        
 	        // perform async. connect to the server
 			@SuppressWarnings("rawtypes")

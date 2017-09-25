@@ -67,7 +67,7 @@ public class HttpOutputConnector extends AbstractMapOutputConnector<HttpOutputCo
     public String url = "http://localhost:8888/esb";
 
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_OUTPUT_TYPE) 
-    public ElementCommonConstants.OUTPUT_TYPE output;
+    public ElementCommonConstants.OUTPUT_TYPE output = ElementCommonConstants.OUTPUT_TYPE.TEXTSTRING;
 
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_ENCODING) 
     public String encoding;
@@ -147,7 +147,9 @@ public class HttpOutputConnector extends AbstractMapOutputConnector<HttpOutputCo
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void sinkAsynchronousOutputMapRequest(IMapMessage message, IMapElementContext context){}
+	protected void sinkAsynchronousOutputMapRequest(IMapMessage message, IMapElementContext context) throws Exception{
+		sinkMessageImpl(message, context);
+	}
 
 	PoolingHttpClientConnectionManager cm;
 	CloseableHttpClient httpclient;
@@ -157,9 +159,12 @@ public class HttpOutputConnector extends AbstractMapOutputConnector<HttpOutputCo
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected IMapMessage sinkSynchronousOutputMapRequest(IMapMessage requestMessage, IMapElementContext context) throws Exception{
-				
-		String _url = this.<String>parseStartProperty(String.class, getUrl());
+	protected IMapMessage sinkSynchronousOutputMapRequest(IMapMessage message, IMapElementContext context) throws Exception{		
+		return sinkMessageImpl(message, context);
+	}
+
+	IMapMessage sinkMessageImpl(IMapMessage requestMessage, IMapElementContext context) throws Exception{
+		String _url = this.<String>parseTypedProperty(String.class, getUrl());
 		
 		HttpGet httpget = new HttpGet(_url);
 		

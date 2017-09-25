@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 	<name>Intamerge Http Tcp</name>
 	<groupId>net.esb</groupId>
-	<!-- %AUTO-REPLACE-START% --><version>1.0.8</version><!-- %AUTO-REPLACE-END% -->
+	<!-- %AUTO-REPLACE-START% --><version>1.0.9</version><!-- %AUTO-REPLACE-END% -->
 	<url>http://www.intamerge.com</url>
 	
 	<organization>
@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>net.esb</groupId>
 			<artifactId>esb-common</artifactId>
-			<version>1.0.8</version>
+			<version>1.0.9</version>
 			<scope>provided</scope>
 		</dependency>
 

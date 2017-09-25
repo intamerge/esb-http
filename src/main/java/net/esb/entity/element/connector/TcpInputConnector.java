@@ -113,6 +113,7 @@ public class TcpInputConnector extends AbstractMapInputConnector<TcpInputConnect
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_HOST) 
     public String host = "0.0.0.0";
 	
+	// this is a string here to allow variable interpolation
 	@net.esb.entity.common.ElementDefinitionProperty(PROP_PORT) 
     public String port = "" + -1;
 	
@@ -146,20 +147,15 @@ public class TcpInputConnector extends AbstractMapInputConnector<TcpInputConnect
 
         transport.setProcessor(filterChainBuilder.build());
 
-		String _host = this.<String>parseStartProperty(String.class, getHost());
-		Integer _port = this.<Integer>parseStartProperty(Integer.class, getPort());
-        
-		// binding transport to start listen on certain host and port
         try {
-			transport.bind(_host, _port);
-		} catch (IOException e) {
-			throw new EntityStartException(e);
-		}
-
-        // start the transport
-        try {
+        	
+        	String _host = this.<String>parseTypedProperty(String.class, getHost());
+        	Integer _port = this.<Integer>parseTypedProperty(Integer.class, getPort());
+        	// binding transport to start listen on certain host and port
+        	transport.bind(_host, _port);
+        	// start the transport
 			transport.start();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new EntityStartException(e);
 		}
         
