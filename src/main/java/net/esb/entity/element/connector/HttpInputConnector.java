@@ -227,6 +227,8 @@ public class HttpInputConnector extends AbstractMapInputConnector<HttpInputConne
             }
             IMapMessage requestMessage = getMap().buildMessage(requestPayload);
             
+            response.addHeader("content-type", ElementHttpConstants.DEFAULT_CONTENT_TYPE);
+            
             putPropertiesOnMessage(requestMessage, request);
 
             Cookie[] cookies = request.getCookies();
@@ -241,7 +243,6 @@ public class HttpInputConnector extends AbstractMapInputConnector<HttpInputConne
             String responsePayload = (null!=responseMessage.getPayload())?responseMessage.getPayload().toString() : "";
             int responseLength = responsePayload.length();
             
-    		response.addHeader("content-type", ElementHttpConstants.DEFAULT_CONTENT_TYPE);
     		
     		putCookiesOnResponse(response, responseMessage);
     		
